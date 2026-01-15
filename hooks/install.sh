@@ -1,6 +1,6 @@
 #!/bin/bash
 # Intent - Install Claude Code hooks
-# Run: curl -fsSL https://intentcode.github.io/install-hooks.sh | bash
+# Run: curl -fsSL https://intentcode.github.io/hooks/install.sh | bash
 
 set -e
 

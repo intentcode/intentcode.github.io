@@ -8,8 +8,8 @@ risk: low
 tags: [marketing, website, static]
 files:
   - index.html
-  - style.css
-  - script.js
+  - assets/style.css
+  - assets/script.js
 ---
 
 # Intent Landing Page

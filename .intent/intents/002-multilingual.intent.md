@@ -8,8 +8,8 @@ risk: low
 tags: [i18n, ux, accessibility]
 files:
   - index.html
-  - script.js
-  - style.css
+  - assets/script.js
+  - assets/style.css
 ---
 
 # Trilingual Support (EN/FR/ES)

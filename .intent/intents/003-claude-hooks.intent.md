@@ -7,8 +7,9 @@ status: active
 risk: low
 tags: [integration, claude-code, automation, hooks]
 files:
-  - install-hooks.sh
-  - test-hooks.sh
+  - hooks/install.sh
+  - hooks/test.sh
+  - hooks/uninstall.sh
 ---
 
 # Claude Code Hooks Integration
@@ -31,7 +32,7 @@ en: Users can install Intent hooks with a single command that fetches and execut
 fr: Les utilisateurs peuvent installer les hooks Intent avec une seule commande qui récupère et exécute le script d'installation depuis GitHub Pages.
 
 ```bash
-curl -fsSL https://intentcode.github.io/install-hooks.sh | bash
+curl -fsSL https://intentcode.github.io/hooks/install.sh | bash
 ```
 
 > Decision: curl pipe to bash is standard for developer tools (homebrew, nvm, etc.) and provides instant setup.
