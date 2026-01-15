@@ -19,65 +19,77 @@ docker compose up
 
 # Accès
 http://localhost:8080
+
+# Installer les hooks Claude Code
+curl -fsSL https://intentcode.github.io/hooks/install.sh | bash
+
+# Tester les hooks
+./hooks/test.sh
 ```
 
 ## Structure
 
 ```
 landing/
-├── index.html      # Page unique
-├── style.css       # Styles (dark theme GitHub-like)
-├── script.js       # Langue toggle, animations
-├── Dockerfile      # Image nginx
+├── index.html              # Page unique (sections: nav, hero, problem, solution, features, demo, cta, footer)
+├── assets/
+│   ├── style.css           # Styles (dark theme GitHub-like)
+│   └── script.js           # Langue toggle, animations
+├── hooks/
+│   ├── install.sh          # Installateur one-liner pour Claude Code hooks
+│   ├── uninstall.sh        # Script de désinstallation
+│   └── test.sh             # Suite de tests POSIX (Mac/Linux)
+├── prompt.md               # LLM prompt pour générer des intents
+├── .intent/                # Documentation Intent du projet
+├── Dockerfile              # Image nginx
 └── docker-compose.yml
 ```
 
+## Done
+
+- [x] Page landing responsive avec dark theme
+- [x] Support trilingue (EN/FR/ES) avec détection navigateur
+- [x] Sélecteur de langue visible (3 boutons avec drapeaux)
+- [x] Hero avec démo visuelle
+- [x] Section problem/solution/features/how-it-works/demo
+- [x] Claude Code hooks installer (curl one-liner)
+- [x] Tests POSIX compatibles Mac/Linux
+- [x] Intent documentation complète avec chunks détaillés
+- [x] Réorganisation dossiers (assets/, hooks/)
+
 ## Next Up
+
+### Priorité Haute
+- [ ] Logo officiel (remplacer l'emoji ⚡)
+- [ ] Favicon
+- [ ] Open Graph meta tags (preview social media)
+- [ ] Bouton "Copier le prompt" dans la section hooks/LLM
 
 ### Contenu & Demo
 - [ ] Ajouter un vrai exemple d'intent file interactif dans la section Demo
 - [ ] Créer une démo live (iframe ou GIF animé du produit)
 - [ ] Ajouter des screenshots réels du produit
+- [ ] Page /docs avec documentation complète
 
 ### Prompts & LLM
-- [ ] Bouton "Copier le prompt" pour générer des intents avec un LLM
 - [ ] Page/section dédiée aux prompts (system prompt, examples)
 - [ ] Exemples de prompts pour différents cas d'usage
-
-### Business Model
-- [ ] Décider: Full open source vs freemium vs SaaS
-- [ ] Clarifier la licence (MIT? Apache 2.0?)
-- [ ] Définir ce qui est gratuit vs payant (si applicable)
-- [ ] Pricing page (si SaaS)
-
-### Branding
-- [ ] Logo officiel (remplacer l'emoji ⚡)
-- [ ] Favicon
-- [ ] Open Graph meta tags (preview social media)
-- [ ] Twitter card
-
-### Trust & Social Proof
-- [ ] Section "How teams use Intent" avec use cases
-- [ ] Témoignages / quotes (quand on aura des users)
-- [ ] Logos d'entreprises (quand on aura des clients)
-- [ ] GitHub stars badge
-
-### Pages Additionnelles
-- [ ] /docs - Documentation complète
-- [ ] /blog - Articles, tutoriels
-- [ ] /changelog - Historique des versions
-- [ ] /pricing (si SaaS)
+- [ ] Intégration MCP server pour Intent
 
 ### SEO & Analytics
 - [ ] Google Analytics ou Plausible
-- [ ] Meta descriptions optimisées
 - [ ] Sitemap.xml
 - [ ] robots.txt
 
-### Intégrations
-- [ ] Waitlist / Newsletter signup (Mailchimp, Buttondown)
-- [ ] Chat support (Crisp, Intercom)
-- [ ] Formulaire de contact plus élaboré
+### Business Model (à décider)
+- [ ] Décider: Full open source vs freemium vs SaaS
+- [ ] Clarifier la licence (MIT? Apache 2.0?)
+- [ ] Pricing page (si SaaS)
+
+### Trust & Social Proof (quand on aura des users)
+- [ ] Section "How teams use Intent" avec use cases
+- [ ] Témoignages / quotes
+- [ ] GitHub stars badge
 
 ## Questions Ouvertes
 
@@ -92,13 +104,7 @@ landing/
    - SaaS (hosted version payante)
    - Enterprise (self-hosted payant)
 
-3. **Target audience?**
-   - Développeurs individuels
-   - Petites équipes
-   - Entreprises
-   - Tous?
-
-4. **Intégrations prioritaires?**
+3. **Intégrations prioritaires?**
    - GitHub App
    - GitLab
    - VS Code extension
