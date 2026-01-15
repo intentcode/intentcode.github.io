@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Intent - Code Review, Reimagined</title>
+  <meta name="description" content="Intent brings the 'why' to code review. Understand changes, not just diffs.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">Intent</span>
+      </div>
+      <div class="nav-links">
+        <a href="#features" data-en="Features" data-fr="Fonctionnalités">Features</a>
+        <a href="#how-it-works" data-en="How it works" data-fr="Comment ça marche">How it works</a>
+        <a href="#demo" data-en="Demo" data-fr="Démo">Demo</a>
+      </div>
+      <div class="nav-actions">
+        <button class="lang-toggle" onclick="toggleLang()">
+          <span class="lang-current">EN</span>
+        </button>
+        <a href="https://github.com/anthropics/intent" class="btn btn-primary" data-en="Get Started" data-fr="Commencer">Get Started</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-badge" data-en="Open Source" data-fr="Open Source">Open Source</div>
+      <h1 class="hero-title">
+        <span data-en="Code Review," data-fr="Revue de code,">Code Review,</span>
+        <span class="gradient-text" data-en="Reimagined" data-fr="Réinventée">Reimagined</span>
+      </h1>
+      <p class="hero-subtitle" data-en="Stop reviewing diffs. Start understanding changes. Intent shows you the 'why' behind every line of code." data-fr="Arrêtez de relire des diffs. Commencez à comprendre les changements. Intent vous montre le 'pourquoi' derrière chaque ligne de code.">
+        Stop reviewing diffs. Start understanding changes. Intent shows you the 'why' behind every line of code.
+      </p>
+      <div class="hero-cta">
+        <a href="#demo" class="btn btn-large btn-primary" data-en="See it in action" data-fr="Voir en action">See it in action</a>
+        <a href="#how-it-works" class="btn btn-large btn-secondary" data-en="Learn more" data-fr="En savoir plus">Learn more</a>
+      </div>
+    </div>
+
+    <!-- Hero Visual -->
+    <div class="hero-visual">
+      <div class="visual-window">
+        <div class="window-header">
+          <div class="window-dots">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="window-title">review.py</div>
+        </div>
+        <div class="window-content">
+          <div class="visual-split">
+            <div class="visual-code">
+              <div class="code-line added">
+                <span class="line-num">42</span>
+                <span class="line-content">+ def validate_user(data):</span>
+              </div>
+              <div class="code-line added">
+                <span class="line-num">43</span>
+                <span class="line-content">+     if not data.get('email'):</span>
+              </div>
+              <div class="code-line added">
+                <span class="line-num">44</span>
+                <span class="line-content">+         raise ValidationError</span>
+              </div>
+              <div class="code-line added">
+                <span class="line-num">45</span>
+                <span class="line-content">+     return sanitize(data)</span>
+              </div>
+            </div>
+            <div class="visual-intent">
+              <div class="intent-card">
+                <div class="intent-header">
+                  <span class="intent-icon">💡</span>
+                  <span class="intent-title" data-en="User Validation" data-fr="Validation Utilisateur">User Validation</span>
+                </div>
+                <p class="intent-desc" data-en="Added input validation to prevent SQL injection and ensure data integrity before database operations." data-fr="Ajout de la validation des entrées pour prévenir les injections SQL et assurer l'intégrité des données avant les opérations en base.">
+                  Added input validation to prevent SQL injection and ensure data integrity before database operations.
+                </p>
+                <div class="intent-decision">
+                  <span class="decision-label" data-en="Decision:" data-fr="Décision :">Decision:</span>
+                  <span data-en="Using early return pattern for clarity" data-fr="Utilisation du pattern early return pour la clarté">Using early return pattern for clarity</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem Section -->
+  <section class="problem">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" data-en="The Problem with Code Review" data-fr="Le Problème avec la Revue de Code">The Problem with Code Review</h2>
+        <p class="section-subtitle" data-en="Traditional code review is broken. Here's why." data-fr="La revue de code traditionnelle est cassée. Voici pourquoi.">Traditional code review is broken. Here's why.</p>
+      </div>
+
+      <div class="problem-grid">
+        <div class="problem-card">
+          <div class="problem-icon">🤔</div>
+          <h3 data-en="Context is Missing" data-fr="Le Contexte Manque">Context is Missing</h3>
+          <p data-en="Reviewers see what changed, but never why. They spend hours reverse-engineering intent from cryptic commit messages." data-fr="Les reviewers voient ce qui a changé, mais jamais pourquoi. Ils passent des heures à deviner l'intention à partir de messages de commit cryptiques.">Reviewers see what changed, but never why. They spend hours reverse-engineering intent from cryptic commit messages.</p>
+        </div>
+
+        <div class="problem-card">
+          <div class="problem-icon">📚</div>
+          <h3 data-en="Documentation is Separate" data-fr="La Documentation est Séparée">Documentation is Separate</h3>
+          <p data-en="Design docs live in Notion. Discussions happen in Slack. Code reviews are on GitHub. Knowledge is scattered everywhere." data-fr="Les docs de design sont sur Notion. Les discussions sur Slack. Les reviews sur GitHub. La connaissance est éparpillée partout.">Design docs live in Notion. Discussions happen in Slack. Code reviews are on GitHub. Knowledge is scattered everywhere.</p>
+        </div>
+
+        <div class="problem-card">
+          <div class="problem-icon">⏰</div>
+          <h3 data-en="Onboarding is Painful" data-fr="L'Onboarding est Douloureux">Onboarding is Painful</h3>
+          <p data-en="New team members can't understand why code exists. git blame gives you who and when, never why." data-fr="Les nouveaux membres ne comprennent pas pourquoi le code existe. git blame donne le qui et le quand, jamais le pourquoi.">New team members can't understand why code exists. git blame gives you who and when, never why.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution Section -->
+  <section class="solution">
+    <div class="container">
+      <div class="solution-content">
+        <div class="solution-text">
+          <div class="section-badge" data-en="The Solution" data-fr="La Solution">The Solution</div>
+          <h2 class="section-title" data-en="Intent: Documentation that Lives with Code" data-fr="Intent : Documentation qui Vit avec le Code">Intent: Documentation that Lives with Code</h2>
+          <p class="solution-desc" data-en="Intent files are structured explanations stored alongside your code. They describe the 'why' behind changes using semantic anchors that survive refactoring." data-fr="Les fichiers Intent sont des explications structurées stockées à côté de votre code. Ils décrivent le 'pourquoi' des changements avec des ancres sémantiques qui résistent au refactoring.">
+            Intent files are structured explanations stored alongside your code. They describe the 'why' behind changes using semantic anchors that survive refactoring.
+          </p>
+
+          <ul class="solution-list">
+            <li>
+              <span class="check">✓</span>
+              <span data-en="Chunks: Group related changes with context" data-fr="Chunks : Regroupez les changements avec leur contexte">Chunks: Group related changes with context</span>
+            </li>
+            <li>
+              <span class="check">✓</span>
+              <span data-en="Decisions: Document the rationale behind choices" data-fr="Décisions : Documentez le raisonnement derrière les choix">Decisions: Document the rationale behind choices</span>
+            </li>
+            <li>
+              <span class="check">✓</span>
+              <span data-en="Semantic Anchors: Links that survive refactoring" data-fr="Ancres Sémantiques : Liens qui résistent au refactoring">Semantic Anchors: Links that survive refactoring</span>
+            </li>
+            <li>
+              <span class="check">✓</span>
+              <span data-en="Multilingual: Native support for FR, EN, ES, DE" data-fr="Multilingue : Support natif FR, EN, ES, DE">Multilingual: Native support for FR, EN, ES, DE</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="solution-visual">
+          <div class="code-block">
+            <div class="code-header">
+              <span class="file-icon">📄</span>
+              <span>.intent/intents/001-auth.intent.md</span>
+            </div>
+            <pre class="code-content"><code><span class="code-comment">---</span>
+<span class="code-key">id:</span> user-authentication
+<span class="code-key">author:</span> claude
+<span class="code-key">risk:</span> <span class="code-value">high</span>
+<span class="code-key">tags:</span> [security, auth]
+<span class="code-comment">---</span>
+
+<span class="code-heading"># User Authentication System</span>
+
+<span class="code-section">## Summary</span>
+<span class="code-lang">en:</span> Implements secure login with JWT tokens.
+<span class="code-lang">fr:</span> Implémente un login sécurisé avec JWT.
+
+<span class="code-section">## Chunks</span>
+
+<span class="code-anchor">### @function:validate_user | Validation</span>
+Validates user credentials against database.
+
+<span class="code-decision">> Decision: Using bcrypt for password hashing</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="features">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" data-en="Three Ways to Review" data-fr="Trois Façons de Relire">Three Ways to Review</h2>
+        <p class="section-subtitle" data-en="Choose the view that fits your workflow" data-fr="Choisissez la vue qui correspond à votre workflow">Choose the view that fits your workflow</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card feature-compare">
+          <div class="feature-icon">⚖️</div>
+          <h3 data-en="Compare Mode" data-fr="Mode Compare">Compare Mode</h3>
+          <p data-en="Side-by-side diff view with intent cards aligned to the code they describe. Perfect for PR reviews." data-fr="Vue diff côte à côte avec les cartes d'intent alignées sur le code qu'elles décrivent. Parfait pour les PR reviews.">
+            Side-by-side diff view with intent cards aligned to the code they describe. Perfect for PR reviews.
+          </p>
+          <div class="feature-preview">
+            <div class="preview-split">
+              <div class="preview-diff">
+                <div class="mini-line add"></div>
+                <div class="mini-line add"></div>
+                <div class="mini-line"></div>
+                <div class="mini-line del"></div>
+              </div>
+              <div class="preview-cards">
+                <div class="mini-card"></div>
+                <div class="mini-card"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-card feature-browse">
+          <div class="feature-icon">📖</div>
+          <h3 data-en="Browse Mode" data-fr="Mode Browse">Browse Mode</h3>
+          <p data-en="Explore a single branch with full file content and all intents visible. Great for understanding a codebase." data-fr="Explorez une branche avec le contenu complet des fichiers et tous les intents visibles. Idéal pour comprendre une codebase.">
+            Explore a single branch with full file content and all intents visible. Great for understanding a codebase.
+          </p>
+          <div class="feature-preview">
+            <div class="preview-browse">
+              <div class="mini-sidebar">
+                <div class="mini-file"></div>
+                <div class="mini-file active"></div>
+                <div class="mini-file"></div>
+              </div>
+              <div class="mini-content">
+                <div class="mini-line"></div>
+                <div class="mini-line"></div>
+                <div class="mini-line"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-card feature-story">
+          <div class="feature-icon">📚</div>
+          <h3 data-en="Story Mode" data-fr="Mode Récit">Story Mode</h3>
+          <p data-en="Read intents as chapters without code. Perfect for understanding the narrative of a project's evolution." data-fr="Lisez les intents comme des chapitres sans code. Parfait pour comprendre l'évolution narrative d'un projet.">
+            Read intents as chapters without code. Perfect for understanding the narrative of a project's evolution.
+          </p>
+          <div class="feature-preview">
+            <div class="preview-story">
+              <div class="story-chapter">
+                <div class="chapter-title"></div>
+                <div class="chapter-text"></div>
+                <div class="chapter-text short"></div>
+              </div>
+              <div class="story-chapter">
+                <div class="chapter-title"></div>
+                <div class="chapter-text"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it Works Section -->
+  <section id="how-it-works" class="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" data-en="How It Works" data-fr="Comment Ça Marche">How It Works</h2>
+        <p class="section-subtitle" data-en="Simple setup, powerful results" data-fr="Configuration simple, résultats puissants">Simple setup, powerful results</p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3 data-en="Create Intent Files" data-fr="Créez des Fichiers Intent">Create Intent Files</h3>
+            <p data-en="Add a .intent/ folder to your repo. Write markdown files describing your changes with semantic anchors." data-fr="Ajoutez un dossier .intent/ à votre repo. Écrivez des fichiers markdown décrivant vos changements avec des ancres sémantiques.">
+              Add a .intent/ folder to your repo. Write markdown files describing your changes with semantic anchors.
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3 data-en="Link to Code" data-fr="Liez au Code">Link to Code</h3>
+            <p data-en="Use @function:name, @class:Name, or @pattern:text to anchor explanations to code locations that survive refactoring." data-fr="Utilisez @function:name, @class:Name, ou @pattern:text pour ancrer les explications à des emplacements de code qui résistent au refactoring.">
+              Use @function:name, @class:Name, or @pattern:text to anchor explanations to code locations that survive refactoring.
+            </p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3 data-en="Review with Context" data-fr="Revoyez avec Contexte">Review with Context</h3>
+            <p data-en="Open Intent to see diffs alongside their explanations. Intent cards appear right next to the code they describe." data-fr="Ouvrez Intent pour voir les diffs à côté de leurs explications. Les cartes d'intent apparaissent juste à côté du code qu'elles décrivent.">
+              Open Intent to see diffs alongside their explanations. Intent cards appear right next to the code they describe.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Demo Section -->
+  <section id="demo" class="demo">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" data-en="See Intent in Action" data-fr="Voyez Intent en Action">See Intent in Action</h2>
+        <p class="section-subtitle" data-en="A real example of intent-based code review" data-fr="Un vrai exemple de revue de code basée sur les intents">A real example of intent-based code review</p>
+      </div>
+
+      <div class="demo-window">
+        <div class="demo-header">
+          <div class="demo-dots">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="demo-tabs">
+            <button class="demo-tab active" data-en="Compare" data-fr="Compare">Compare</button>
+            <button class="demo-tab" data-en="Browse" data-fr="Browse">Browse</button>
+            <button class="demo-tab" data-en="Story" data-fr="Récit">Story</button>
+          </div>
+          <div class="demo-branch">
+            <span class="branch-icon">⎇</span>
+            <span>main...feature/auth</span>
+          </div>
+        </div>
+
+        <div class="demo-content">
+          <div class="demo-sidebar">
+            <div class="sidebar-section">
+              <div class="sidebar-title" data-en="Files" data-fr="Fichiers">Files</div>
+              <div class="file-tree">
+                <div class="file-item">
+                  <span class="file-icon">📁</span>
+                  <span>src/</span>
+                </div>
+                <div class="file-item indent active">
+                  <span class="file-badge mod">M</span>
+                  <span>auth.py</span>
+                </div>
+                <div class="file-item indent">
+                  <span class="file-badge add">+</span>
+                  <span>validators.py</span>
+                </div>
+              </div>
+            </div>
+            <div class="sidebar-section">
+              <div class="sidebar-title" data-en="Intents (2)" data-fr="Intents (2)">Intents (2)</div>
+              <div class="intent-list">
+                <div class="intent-item active">
+                  <span class="intent-badge high">!</span>
+                  <span data-en="#001 Authentication" data-fr="#001 Authentification">#001 Authentication</span>
+                </div>
+                <div class="intent-item">
+                  <span class="intent-badge low">•</span>
+                  <span data-en="#002 Validation" data-fr="#002 Validation">#002 Validation</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="demo-main">
+            <div class="demo-split">
+              <div class="demo-code">
+                <div class="code-filename">auth.py</div>
+                <div class="demo-lines">
+                  <div class="demo-line ctx">
+                    <span class="ln">38</span>
+                    <span class="lc">class AuthService:</span>
+                  </div>
+                  <div class="demo-line add highlight">
+                    <span class="ln">39</span>
+                    <span class="lc">+   def login(self, credentials):</span>
+                  </div>
+                  <div class="demo-line add highlight">
+                    <span class="ln">40</span>
+                    <span class="lc">+       user = self.validate(credentials)</span>
+                  </div>
+                  <div class="demo-line add highlight">
+                    <span class="ln">41</span>
+                    <span class="lc">+       return self.create_token(user)</span>
+                  </div>
+                  <div class="demo-line ctx">
+                    <span class="ln">42</span>
+                    <span class="lc"></span>
+                  </div>
+                  <div class="demo-line add">
+                    <span class="ln">43</span>
+                    <span class="lc">+   def create_token(self, user):</span>
+                  </div>
+                  <div class="demo-line add">
+                    <span class="ln">44</span>
+                    <span class="lc">+       return jwt.encode(user.id)</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="demo-intents">
+                <div class="demo-card active">
+                  <div class="card-header">
+                    <span class="card-badge high" data-en="HIGH RISK" data-fr="RISQUE ÉLEVÉ">HIGH RISK</span>
+                    <span class="card-anchor">@function:login</span>
+                  </div>
+                  <h4 data-en="User Login Flow" data-fr="Flux de Connexion">User Login Flow</h4>
+                  <p data-en="Core authentication entry point. Validates credentials and issues JWT tokens for session management." data-fr="Point d'entrée principal de l'authentification. Valide les identifiants et émet des tokens JWT pour la gestion de session.">
+                    Core authentication entry point. Validates credentials and issues JWT tokens for session management.
+                  </p>
+                  <div class="card-decision">
+                    <span class="decision-icon">💡</span>
+                    <span data-en="Using short-lived tokens (15min) with refresh for security" data-fr="Utilisation de tokens courts (15min) avec refresh pour la sécurité">Using short-lived tokens (15min) with refresh for security</span>
+                  </div>
+                </div>
+
+                <div class="demo-card dimmed">
+                  <div class="card-header">
+                    <span class="card-badge low" data-en="LOW RISK" data-fr="RISQUE FAIBLE">LOW RISK</span>
+                    <span class="card-anchor">@function:create_token</span>
+                  </div>
+                  <h4 data-en="Token Generation" data-fr="Génération de Token">Token Generation</h4>
+                  <p data-en="Creates signed JWT tokens using HS256 algorithm." data-fr="Crée des tokens JWT signés avec l'algorithme HS256.">
+                    Creates signed JWT tokens using HS256 algorithm.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta">
+    <div class="container">
+      <div class="cta-content">
+        <h2 data-en="Ready to Transform Your Code Reviews?" data-fr="Prêt à Transformer Vos Revues de Code ?">Ready to Transform Your Code Reviews?</h2>
+        <p data-en="Intent is open source and free. Start adding context to your code today." data-fr="Intent est open source et gratuit. Commencez à ajouter du contexte à votre code dès aujourd'hui.">
+          Intent is open source and free. Start adding context to your code today.
+        </p>
+        <div class="cta-buttons">
+          <a href="https://github.com/anthropics/intent" class="btn btn-large btn-primary">
+            <span class="btn-icon">⭐</span>
+            <span data-en="Star on GitHub" data-fr="Star sur GitHub">Star on GitHub</span>
+          </a>
+          <a href="https://github.com/anthropics/intent#getting-started" class="btn btn-large btn-secondary" data-en="Read the Docs" data-fr="Lire la Doc">Read the Docs</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <span class="logo-icon">⚡</span>
+          <span class="logo-text">Intent</span>
+        </div>
+        <p class="footer-tagline" data-en="Code review, reimagined." data-fr="Revue de code, réinventée.">Code review, reimagined.</p>
+        <div class="footer-links">
+          <a href="https://github.com/anthropics/intent">GitHub</a>
+          <span class="separator">•</span>
+          <a href="https://github.com/anthropics/intent/issues">Issues</a>
+          <span class="separator">•</span>
+          <a href="https://github.com/anthropics/intent/blob/main/LICENSE">MIT License</a>
+        </div>
+        <p class="footer-credit" data-en="Built with Claude" data-fr="Construit avec Claude">Built with Claude</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
