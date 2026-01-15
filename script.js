@@ -1,22 +1,39 @@
 // Intent Landing Page - Language Toggle & Interactions
 
+const LANGUAGES = ['en', 'fr', 'es'];
+const FLAGS = { en: '🇬🇧', fr: '🇫🇷', es: '🇪🇸' };
 let currentLang = 'en';
 
+function getNextLang() {
+  const currentIndex = LANGUAGES.indexOf(currentLang);
+  return LANGUAGES[(currentIndex + 1) % LANGUAGES.length];
+}
+
+function updateLangButton() {
+  const nextLang = getNextLang();
+  document.querySelector('.lang-current').textContent = `${FLAGS[nextLang]} ${nextLang.toUpperCase()}`;
+}
+
 function toggleLang() {
-  currentLang = currentLang === 'en' ? 'fr' : 'en';
+  currentLang = getNextLang();
   updateLanguage();
-
-  // Update button text
-  document.querySelector('.lang-current').textContent = currentLang.toUpperCase();
-
-  // Update HTML lang attribute
+  updateLangButton();
   document.documentElement.lang = currentLang;
 }
 
+function setLang(lang) {
+  if (LANGUAGES.includes(lang)) {
+    currentLang = lang;
+    updateLanguage();
+    updateLangButton();
+    document.documentElement.lang = currentLang;
+  }
+}
+
 function updateLanguage() {
-  // Update all elements with data-en and data-fr attributes
-  document.querySelectorAll('[data-en][data-fr]').forEach(el => {
-    const text = el.getAttribute(`data-${currentLang}`);
+  // Update all elements with data-en, data-fr, data-es attributes
+  document.querySelectorAll('[data-en]').forEach(el => {
+    const text = el.getAttribute(`data-${currentLang}`) || el.getAttribute('data-en');
     if (text) {
       el.textContent = text;
     }
@@ -93,12 +110,12 @@ window.addEventListener('scroll', () => {
   lastScroll = currentScroll;
 });
 
-// Detect browser language and set initial
-const browserLang = navigator.language.split('-')[0];
-if (browserLang === 'fr') {
-  currentLang = 'fr';
-  document.querySelector('.lang-current').textContent = 'FR';
-  document.documentElement.lang = 'fr';
+// Detect browser language, default to English if not FR/ES
+const browserLang = navigator.language.split('-')[0].toLowerCase();
+if (LANGUAGES.includes(browserLang) && browserLang !== 'en') {
+  currentLang = browserLang;
+  document.documentElement.lang = currentLang;
+  updateLangButton();
   updateLanguage();
 }
 
