@@ -24,10 +24,12 @@
         <a href="#demo" data-en="Demo" data-fr="Démo" data-es="Demo">Demo</a>
       </div>
       <div class="nav-actions">
-        <button class="lang-toggle" onclick="toggleLang()">
-          <span class="lang-current">🇫🇷 FR</span>
-        </button>
-        <a href="mailto:contact@intentcode.dev" class="btn btn-primary" data-en="Contact Us" data-fr="Nous Contacter" data-es="Contáctanos">Contact Us</a>
+        <div class="lang-selector">
+          <button class="lang-btn active" onclick="setLang('en')">🇬🇧 EN</button>
+          <button class="lang-btn" onclick="setLang('fr')">🇫🇷 FR</button>
+          <button class="lang-btn" onclick="setLang('es')">🇪🇸 ES</button>
+        </div>
+        <a href="mailto:berenger.ouadi@gmail.com" class="btn btn-primary" data-en="Contact Us" data-fr="Nous Contacter" data-es="Contáctanos">Contact Us</a>
       </div>
     </div>
   </nav>
@@ -96,6 +98,26 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- Hero Highlights -->
+    <div class="hero-highlights">
+      <div class="highlight">
+        <span class="highlight-icon">⚡</span>
+        <span data-en="Fast Setup" data-fr="Config Rapide" data-es="Configuración Rápida">Fast Setup</span>
+      </div>
+      <div class="highlight">
+        <span class="highlight-icon">🔒</span>
+        <span data-en="Git Native" data-fr="Git Natif" data-es="Git Nativo">Git Native</span>
+      </div>
+      <div class="highlight">
+        <span class="highlight-icon">🌍</span>
+        <span data-en="Multilingual" data-fr="Multilingue" data-es="Multilingüe">Multilingual</span>
+      </div>
+      <div class="highlight">
+        <span class="highlight-icon">🤖</span>
+        <span data-en="AI-Ready" data-fr="Prêt pour l'IA" data-es="Listo para IA">AI-Ready</span>
       </div>
     </div>
   </section>
@@ -448,7 +470,7 @@ Validates user credentials against database.
           We're building the future of code review. Get in touch if you want to learn more or collaborate.
         </p>
         <div class="cta-buttons">
-          <a href="mailto:contact@intentcode.dev" class="btn btn-large btn-primary">
+          <a href="mailto:berenger.ouadi@gmail.com" class="btn btn-large btn-primary">
             <span class="btn-icon">✉️</span>
             <span data-en="Contact Us" data-fr="Nous Contacter" data-es="Contáctanos">Contact Us</span>
           </a>
@@ -467,7 +489,7 @@ Validates user credentials against database.
         </div>
         <p class="footer-tagline" data-en="Code review, reimagined." data-fr="Revue de code, réinventée." data-es="Revisión de código, reinventada.">Code review, reimagined.</p>
         <div class="footer-links">
-          <a href="mailto:contact@intentcode.dev" data-en="Contact" data-fr="Contact" data-es="Contacto">Contact</a>
+          <a href="mailto:berenger.ouadi@gmail.com" data-en="Contact" data-fr="Contact" data-es="Contacto">Contact</a>
         </div>
         <p class="footer-credit" data-en="Built with Claude" data-fr="Construit avec Claude" data-es="Construido con Claude">Built with Claude</p>
       </div>

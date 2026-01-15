@@ -1,31 +1,20 @@
 // Intent Landing Page - Language Toggle & Interactions
 
 const LANGUAGES = ['en', 'fr', 'es'];
-const FLAGS = { en: '🇬🇧', fr: '🇫🇷', es: '🇪🇸' };
 let currentLang = 'en';
 
-function getNextLang() {
-  const currentIndex = LANGUAGES.indexOf(currentLang);
-  return LANGUAGES[(currentIndex + 1) % LANGUAGES.length];
-}
-
-function updateLangButton() {
-  const nextLang = getNextLang();
-  document.querySelector('.lang-current').textContent = `${FLAGS[nextLang]} ${nextLang.toUpperCase()}`;
-}
-
-function toggleLang() {
-  currentLang = getNextLang();
-  updateLanguage();
-  updateLangButton();
-  document.documentElement.lang = currentLang;
+function updateLangButtons() {
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    const btnLang = btn.textContent.trim().split(' ')[1].toLowerCase();
+    btn.classList.toggle('active', btnLang === currentLang);
+  });
 }
 
 function setLang(lang) {
   if (LANGUAGES.includes(lang)) {
     currentLang = lang;
     updateLanguage();
-    updateLangButton();
+    updateLangButtons();
     document.documentElement.lang = currentLang;
   }
 }
@@ -115,7 +104,7 @@ const browserLang = navigator.language.split('-')[0].toLowerCase();
 if (LANGUAGES.includes(browserLang) && browserLang !== 'en') {
   currentLang = browserLang;
   document.documentElement.lang = currentLang;
-  updateLangButton();
+  updateLangButtons();
   updateLanguage();
 }
 
