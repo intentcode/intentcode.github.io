@@ -1,0 +1,12 @@
+version: 1
+default_lang: en
+intents:
+  - id: "001"
+    file: 001-landing-page.intent.md
+    status: active
+  - id: "002"
+    file: 002-multilingual.intent.md
+    status: active
+  - id: "003"
+    file: 003-claude-hooks.intent.md
+    status: active
