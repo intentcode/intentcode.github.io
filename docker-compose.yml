@@ -6,5 +6,5 @@ services:
     volumes:
       # Mount files for live reload during development
       - ./index.html:/usr/share/nginx/html/index.html:ro
-      - ./style.css:/usr/share/nginx/html/style.css:ro
-      - ./script.js:/usr/share/nginx/html/script.js:ro
+      - ./assets:/usr/share/nginx/html/assets:ro
+      - ./hooks:/usr/share/nginx/html/hooks:ro
