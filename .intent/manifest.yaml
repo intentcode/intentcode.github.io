@@ -10,3 +10,6 @@ intents:
   - id: "003"
     file: 003-claude-hooks.intent.md
     status: active
+  - id: "004"
+    file: 004-branding.intent.md
+    status: active
